@@ -73,13 +73,13 @@ namespace :easyblog do
           end
           break if reply =~ /y(?:es)*/i
           redo if reply =~ /no*/i
-          puts "No admin user was created."
+          puts "Sorry."
           exit
         end
       end
       user = User.new
       user.update_attributes(:username => username, :password => password, :email => email)
-      user.update_attribute(:admin, true) # Mass assignments don't work for :admin because of the attr_protected
+      user.update_attribute(:admin, true)
       puts "Admin user has been created."
     end
   end
